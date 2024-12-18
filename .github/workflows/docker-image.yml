@@ -39,3 +39,5 @@ jobs:
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.DEV_CLUSTER_NAME }}
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
+    - name: Deploy kubernetes servcie
+      run: kubectl apply -f $GITHUB_WORKSPACE/config/services.yml
