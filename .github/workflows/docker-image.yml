@@ -25,7 +25,7 @@ jobs:
       run: doctl registry login --expiry-seconds 1200
     - name: Push image to DigitalOcean Container Registry
       run: docker push ${{ secrets.DEV_REGISTRY_NAME }}/nano:$(echo $GITHUB_SHA | head -c7)
-       # Deploy to DigitalOcean Kubernetes..
+       # Deploy to DigitalOcean Kubernetes
     - name: Update deployment file
       run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.DEV_REGISTRY_NAME }}/nano:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
     - name: Save DigitalOcean kubeconfig with short-lived credentials
