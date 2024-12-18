@@ -1,7 +1,10 @@
 FROM ubuntu:latest
-RUN apt-get update 
-RUN apt-get install apache2 git -y
-CMD ["/usr/bin/apache2","D","FOREGROUD"]
+LABEL "Author"="Roshan"
+RUN apt update && apt install -y apache2
+RUN apt install -y git
+RUN apt install -y apache2-utils
+RUN apt clean
+COPY . /var/www/html
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 EXPOSE 80
 WORKDIR /var/www/html
-ADD nano.tar.gz /var/www/html
