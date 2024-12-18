@@ -14,5 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+     # Install doctl.
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DEV_DIGITALOCEAN_ACCESS_TOKEN }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
