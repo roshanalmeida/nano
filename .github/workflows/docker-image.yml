@@ -27,4 +27,4 @@ jobs:
       run: docker push ${{ secrets.DEV_REGISTRY_NAME }}/nano:$(echo $GITHUB_SHA | head -c7)
        # Deploy to DigitalOcean Kubernetes.
     - name: Update deployment file
-	      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.DEV_REGISTRY_NAME }}/nano:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.DEV_REGISTRY_NAME }}/nano:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
