@@ -28,3 +28,5 @@ jobs:
        # Deploy to DigitalOcean Kubernetes.
     - name: Update deployment file
       run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.DEV_REGISTRY_NAME }}/nano:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
+    - name: Save DigitalOcean kubeconfig with short-lived credentials
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.DEV_CLUSTER_NAME }}
