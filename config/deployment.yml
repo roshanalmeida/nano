@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nano
+  labels:
+    app: nano
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nano
+  template:
+    metadata:
+      labels:
+        app: nano
+    spec:
+      containers:
+      - name: nginx
+        image: <IMAAGE>
+        ports:
+        - containerPort: 80
+
