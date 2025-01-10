@@ -24,7 +24,7 @@ jobs:
        sudo apt-get update
        sudo apt-get install -y kubectl kubeadm kubelet
     - name: Build the Docker image
-      run: docker build -t ${{ secrets.REGISTRY_NAME }}/vtv:$(echo $GITHUB_SHA | head -c7) .
+      run: docker build -t ${{ secrets.REGISTRY_NAME }}/nano:$(echo $GITHUB_SHA | head -c7) .
         #    - name: Log in to DigitalOcean Container Registry with short-lived credentials
         # run: doctl registry login --expiry-seconds 1200
 #    - name: Login in docker hub
